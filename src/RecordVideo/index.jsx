@@ -39,7 +39,7 @@ export const RecordVideo = () => {
 
             const recordedChunks = [];
             mediaRecorderRef.current.addEventListener('dataavailable', function (e) {
-                if (e.data.size > 0 && !paused) {
+                if (e.data.size > 0) {
                     recordedChunks.push(e.data);
                 }
             });
