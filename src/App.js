@@ -2,16 +2,15 @@ import React from 'react';
 import './App.css';
 
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-import {RecordVideo} from './RecordVideo/RecordVideo';
-import {RecordAudio} from './RecordAudio/RecordAudio';
-import {RecordScreen} from './RecordScreen/RecordScreen';
+import {RecordVideo} from './RecordVideo';
+import {RecordAudio} from './RecordAudio';
+import {RecordScreen} from './RecordScreen';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <header className="text-center py-5 bg-blue-500 text-white">
-          <h1 className="text-4xl">Recorder for Allen</h1>
           <nav>
             <ul className="flex justify-around mt-4">
               <li><Link to="/record-video">Record Video</Link></li>
