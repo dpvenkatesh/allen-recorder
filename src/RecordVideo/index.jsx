@@ -62,15 +62,8 @@ export const RecordVideo = () => {
 
     const stopRecording = () => {
         console.log('Stop Recording');
+        mediaRecorderRef.current.stop();
 
-        // videoRef.current = video.srcObject;
-        const tracks = streamRef.current.getTracks();
-
-        tracks.forEach(function (track) {
-            track.stop();
-        });
-
-        videoRef.current.srcObject = null;
         setRecordingStarted(false);
         startPreview();
     };
@@ -91,6 +84,14 @@ export const RecordVideo = () => {
 
     useEffect(() => {
         startPreview();
+
+        return () => {
+            if (streamRef.current) {
+                streamRef.current.getTracks().forEach((track) => {
+                    track.stop();
+                });
+            }
+        }
     }, [])
 
 
@@ -132,12 +133,5 @@ export const RecordVideo = () => {
 
         </div>
     );
-
-
-    // create a video element to display the video stream
-    // create a canvas element to display the video stream
-    // create a download button to download the video
-    // create a download button to download the canvas
-
 }
 
